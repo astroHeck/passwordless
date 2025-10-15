@@ -77,8 +77,12 @@ module.exports = {
         subscritption_end: end.toISOString()
       });
 
+      const fullUser = await strapi
+        .query('user', 'users-permissions')
+        .findOne({ id: newUser.id });
+
       isNew = true;
-      return { user: newUser, isNew };
+      return { user: fullUser, isNew };
     }
     const updatedUser = await strapi.query('user', 'users-permissions')
       .update(
