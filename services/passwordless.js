@@ -63,7 +63,7 @@ module.exports = {
 
 
 
-      const newUser = strapi.query('user', 'users-permissions').create({
+      const newUser = await strapi.query('user', 'users-permissions').create({
         email,
         username: email,
         lvl: level,
